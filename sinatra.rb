@@ -11,4 +11,5 @@ end
 get '/HTTParty' do
   # @party
   # redirect '/'
+  string = "this is working"
 end
