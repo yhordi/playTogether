@@ -1,11 +1,14 @@
 require 'sinatra'
-require 'HTTParty'
+require 'httparty'
+require 'dotenv'
+Dotenv.load(File.expand_path("../.env",  __FILE__))
 
 get '/' do
   redirect 'index.html'
 end
-
 get '/HTTParty' do
-  @party = HTTParty.get("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=E6B0ADB9B2C8C41CC3A0D86C3F235406&steamids=76561197985852059")
+
+  @party = HTTParty.get("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{ENV['SECRET_KEY']}&steamids=76561197985852059")
+  p @party
   @party.to_json
 end
