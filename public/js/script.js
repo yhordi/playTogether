@@ -9,45 +9,23 @@ var Steam = function(){
 }
 
 Steam.prototype = {
-  ajaxRequest: function(e){
-    var here = this
-    $.ajax({
-      dataType: 'Json',
-      type: 'get',
-      url: "/HTTParty",
-      data: {
-        key: 'E6B0ADB9B2C8C41CC3A0D86C3F235406',
-        steamids: '76561197985852059',
-      },
-      success: function (data) {
-        ajaxData = data
-        console.log(data);
-        console.log(here)
-        here.steam.injectResponse(ajaxData)
-      },
-      error: function (bug) {
-        console.log(bug)
-      },
-      complete:function (data) {
-        var status = data.status
-        response = $.parseJSON(data.responseText);
-      }
-    })
-  },
   getInfo: function(){
+    var here = this
     $.ajax({
       dataType: 'json',
       type: 'GET',
       url: '/HTTParty',
-      success: function(){
+      success: function(data){
         console.log("SUCCESS!")
+        here.steam.injectResponse(data)
       },
       error: function (bug) {
-        console.log("something went wrong!")
+        console.log("error:")
+        console.log(bug)
       },
       complete: function (data) {
         var status = data.status
-        console.log(status)
+        console.log('complete: ' + status)
       }
     })
   },
