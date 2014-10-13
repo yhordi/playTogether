@@ -10,13 +10,14 @@ var Steam = function(){
 
 Steam.prototype = {
   getInfo: function(){
+    var here = this
     $.ajax({
       dataType: 'json',
       type: 'GET',
       url: '/HTTParty',
       success: function(data){
         console.log("SUCCESS!")
-        console.log(data)
+        here.steam.injectResponse(data)
       },
       error: function (bug) {
         console.log("error:")
