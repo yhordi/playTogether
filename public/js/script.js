@@ -12,7 +12,7 @@ Steam.prototype = {
   // right now the app uses this to get my steam id based on my vanity url and does nothing with it
   // I want to make it so a user can enter their id or vanity url and get their information
   // There will be an if statement to check whether the user entered their id or vanity url and it will then hit the apropriate api returning the appropriate data
-  getInfoBasedOnKey: function(){
+  getInfoBasedOnId: function(){
     var here = this
     $.ajax({
       dataType: 'json',
@@ -33,14 +33,35 @@ Steam.prototype = {
       }
     })
   },
+  getId: function(){
+    var here = this
+    $.ajax({
+      dataType: 'json',
+      type: 'POST',
+      url: '/user/Url',
+      success: function(data){
+        console.log("SUCCESS!")
+        debugger
+        here.getInfoBasedOnId(data)
+      },
+      error: function (bug) {
+        console.log("error:")
+        console.log(bug)
+      },
+      complete: function (data) {
+        var status = data.status
+        console.log('complete: ' + status)
+      }
+    })
+  },
   checkUserInput: function(){
     var here = this
     var userInput = $('.urlOrId').val()
     if (userInput.length == 17) {
       var userInput = parseInt(userInput)
-      here.steam.getInfoBasedOnKey(userInput)
+      here.steam.getInfoBasedOnId(userInput)
     } else {
-      // here.steam.getKey(data)
+      here.steam.getId(userInput)
     }
   },
   injectResponse: function(data) {
