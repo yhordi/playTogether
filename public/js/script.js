@@ -2,25 +2,22 @@ $(document).ready(function(){
   var steam = new Steam
   var controller = new Controller(steam)
   controller.bindListeners()
-  var ajaxData = null;
 });
 
 var Steam = function(){
+  var userInput = this.userInput
 }
 
 Steam.prototype = {
-  // right now the app uses this to get my steam id based on my vanity url and does nothing with it
-  // I want to make it so a user can enter their id or vanity url and get their information
-  // There will be an if statement to check whether the user entered their id or vanity url and it will then hit the apropriate api returning the appropriate data
-  getInfoBasedOnId: function(){
+  getInfoBasedOnId: function(userInput){
     var here = this
     $.ajax({
       dataType: 'json',
       type: 'POST',
       url: '/user/Id',
+      data: { Id: userInput },
       success: function(data){
         console.log("SUCCESS!")
-        debugger
         here.injectResponse(data)
       },
       error: function (bug) {
@@ -33,15 +30,15 @@ Steam.prototype = {
       }
     })
   },
-  getId: function(){
+  getId: function(userInput){
     var here = this
     $.ajax({
       dataType: 'json',
       type: 'POST',
       url: '/user/Url',
+      data: { Url: userInput },
       success: function(data){
         console.log("SUCCESS!")
-        debugger
         here.getInfoBasedOnId(data)
       },
       error: function (bug) {
@@ -55,8 +52,8 @@ Steam.prototype = {
     })
   },
   checkUserInput: function(){
+    userInput = $('.urlOrId').val()
     var here = this
-    var userInput = $('.urlOrId').val()
     if (userInput.length == 17) {
       var userInput = parseInt(userInput)
       here.steam.getInfoBasedOnId(userInput)
