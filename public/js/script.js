@@ -63,9 +63,9 @@ Steam.prototype = {
   },
   injectResponse: function(data) {
     var playerData = data.response.players[0]
-    $(".avatar").append("<img src =" + playerData.avatarfull + "/>")
-    $(".userName").append(playerData.personaname)
-    $(".realName").append(playerData.realname)
+    $(".avatar").html("<img src =" + playerData.avatarfull + "/>")
+    $(".userName").html('Username: '+ playerData.personaname)
+    $(".realName").html('Name: ' + playerData.realname)
   }
 }
 
