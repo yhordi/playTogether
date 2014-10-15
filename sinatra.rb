@@ -18,8 +18,6 @@ post '/user/Id' do
 end
 
 post '/friends' do
-  p params
-  # http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=E6B0ADB9B2C8C41CC3A0D86C3F235406&steamid=76561197985852059&relationship=friend
   @party = HTTParty.get("http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=#{ENV['SECRET_KEY']}&steamid=#{params[:Id]}&relationship=friend")
   @party.to_json
 end
