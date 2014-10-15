@@ -13,7 +13,10 @@ post '/user/Url' do
 end
 
 post '/user/Id' do
-  @party = HTTParty.get("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{ENV['SECRET_KEY']}&steamids=#{params[:Id][:response][:steamid]}")
+  p params[:Id]
+  # [:response]
+  # [:steamid]
+  @party = HTTParty.get("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{ENV['SECRET_KEY']}&steamids=#{params[:Id]}")
   @party.to_json
 end
 
