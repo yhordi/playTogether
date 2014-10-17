@@ -36,6 +36,8 @@ Steam.prototype = {
       url: '/user/Url',
       data: { Url: userInput },
       success: function(data){
+        console.log("SUCCESS!")
+        data = data.response.steamid
         here.getInfoBasedOnId(data)
       },
       error: function (bug) {
@@ -51,17 +53,18 @@ Steam.prototype = {
     userInput = $('.urlOrId').val()
     var here = this
     if (userInput.length == 17) {
-      var userInput = parseInt(userInput)
       here.steam.getInfoBasedOnId(userInput)
     } else {
       here.steam.getId(userInput)
     }
   },
   injectResponse: function(data) {
+    // debugger
     var playerData = data.response.players[0]
     $(".avatar").html("<img src =" + playerData.avatarfull + "/>")
     $(".userName").html('Username: '+ playerData.personaname)
     $(".realName").html('Name: ' + playerData.realname)
+<<<<<<< HEAD
     $(".steamId").html('Name: ' + playerData.steamid)
     // debugger
     this.getFriends(playerData.steamid)
@@ -86,6 +89,9 @@ Steam.prototype = {
         console.log('complete: ' + status)
       }
     })
+=======
+    $('.steam64id').html('Steam64 ID: ' + playerData.steamid)
+>>>>>>> master
   }
 }
 
