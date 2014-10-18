@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20141018001126) do
 
   create_table "friend_games", force: true do |t|
     t.integer  "friend_id"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,12 +26,15 @@ ActiveRecord::Schema.define(version: 20141018001126) do
   create_table "friends", force: true do |t|
     t.integer  "user_id"
     t.string   "personaname"
+    t.boolean  "multiplayer?"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "games", force: true do |t|
     t.integer  "user_id"
+    t.string   "title"
+    t.boolean  "multiplayer?"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
