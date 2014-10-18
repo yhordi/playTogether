@@ -3,9 +3,8 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :personaname
       t.string :realname
-      t.string :steamid
-      t.string :profileurl
       t.string :avatarmedium
+      t.string :steamid
       t.timestamps
     end
   end

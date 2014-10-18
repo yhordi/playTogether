@@ -11,14 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017221351) do
+ActiveRecord::Schema.define(version: 20141018001126) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "friend_games", force: true do |t|
+    t.integer  "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "friends", force: true do |t|
+    t.integer  "user_id"
+    t.string   "personaname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "games", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "personaname"
     t.string   "realname"
-    t.string   "steamid"
-    t.string   "profileurl"
     t.string   "avatarmedium"
+    t.string   "steamid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
