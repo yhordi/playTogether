@@ -6,12 +6,11 @@
       Find games you can play with your friends.
     </div>
   </div>
-
+  <% if [:sessions] == true %>
   <div class='container'>
     <div class='infoArea'>
       <div class='avatar'></div>
     <ul class="playerInfo">
-      <!-- <li class="avatar"></li> -->
       <li class="userName"></li>
       <li class="realName"></li>
       <li class="steam64id"></li>
@@ -25,6 +24,9 @@
       <input class='go' type='button' value='Get Info'/>
     </form>
   </div>
+  <% else %>
+    <% render "user/new.html.erb" %>
+  <% end %>
   <div class="footer">
     <p>Powered by <a href="http://steampowered.com">Steam</a></p>
   </div>

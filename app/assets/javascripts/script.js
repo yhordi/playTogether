@@ -13,7 +13,7 @@ Steam.prototype = {
     var here = this
     $.ajax({
       dataType: 'json',
-      type: 'POST',
+      type: 'get',
       url: '/user/Id',
       data: { Id: userInput },
       success: function(data){
@@ -34,7 +34,7 @@ Steam.prototype = {
     var here = this
     $.ajax({
       dataType: 'json',
-      type: 'POST',
+      type: 'get',
       url: '/user/Url',
       data: { Url: userInput },
       success: function(data){
