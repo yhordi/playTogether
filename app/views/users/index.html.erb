@@ -1,10 +1,11 @@
 
 <body>
-  <div class='title'>
-    PlayTogether
+    <div class='title'>
+      Play Together
     <div class='subheading'>
       Find games you can play with your friends.
     </div>
+      <%= render "new" %>
   </div>
   <% if [:sessions] == true %>
   <div class='container'>
@@ -24,8 +25,6 @@
       <input class='go' type='button' value='Get Info'/>
     </form>
   </div>
-  <% else %>
-    <% render "user/new.html.erb" %>
   <% end %>
   <div class="footer">
     <p>Powered by <a href="http://steampowered.com">Steam</a></p>
